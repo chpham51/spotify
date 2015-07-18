@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="author" content="Christy Pham">
+  <meta name="description" content="Spotify Application">
+  <script src="https://code.jquery.com/jquery.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
+  <script src="app.js"></script>
+  <link href="app.css" rel="stylesheet" type="text/css" />
+  <meta charset="utf-8">
+  <title>Spotify Search Artist</title>
+</head>
+<body>
+  <div ng-app="myApp" ng-controller="myCtrl">
+  <form name="artistForm">
+    <div class="form-group">
+      <label>Spotify Search Artist</label>
+      <input name="search" ng-minlength=3 placeholder="Search for an artist to learn more about them!" ng-model="artist" class="form-control" required></input>
+    <p class="help-block" ng-show="artistForm.search.$error.minlength">Enter 3+ characters</p>
+    </div>
+    <div class="form-group">
+      <button ng-disabled="artistForm.search.$invalid" class="btn btn-primary" ng-click="searchArtists()" type="submit">Submit</button>
+    </div>
+  </form>
+  <div id="results" class="container-fixed">
+    <div ng-repeat="artist in artists" class="col-xs-4 img">
+      <img id="selectedArtist" src="{{artist.images[0].url}}" class="img-circle"></img>
+    </div>
+    <div class="container-fixed">
+      <div ng-repeat="artist in artists">
+        <p id="info">{{artist.name}}'s music is categorized as {{artist.genres}}. {{artist.name}} is followed by {{artist.followers.total}} Spotify users. Learn more about them <a href="{{artist.external_urls.value">here</a></p2></p><br><br>
+      </div>
+    </div>
+  </div>
+  </div>
+</body>
+</html>
